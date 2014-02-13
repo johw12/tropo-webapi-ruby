@@ -1,8 +1,12 @@
 = Tropo Web API Ruby Library
 
-A Ruby library for interaction with the Tropo Web API (http://tropo.com) using JSON.
+A Ruby library for interaction with the Telekom Tropo Web API using JSON.
 
-== Tropo Web API Overview
+More information could be found here: http://www.developergarden.com/apis/apis-sdks/telekom-tropo-api/
+
+Our documentation could be found under section Telekom Tropo API here: http://www.developergarden.com/apis/docu-support/ 
+
+== Telekom Tropo Web API Overview
 
 The Tropo Remote API provides a RESTful JSON API for controlling realtime communications applications from
 your own web servers.

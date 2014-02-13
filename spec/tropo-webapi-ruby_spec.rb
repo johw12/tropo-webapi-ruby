@@ -2,6 +2,9 @@ require File.expand_path(File.dirname(__FILE__) + '/spec_helper')
 
 describe "Tropo" do
 
+
+   response = Tropo::Generator.wait({ :milliseconds => 10, :allowSignals => "exit"})
+
   # Ask action tests (and alias Prompt)
   it "should generate a complete 'ask' JSON document" do
     response = Tropo::Generator.ask({ :name    => 'foo',
@@ -360,15 +363,6 @@ describe "Tropo" do
       on  :event => 'error', :next => 'error.json'
     end
     @@new_session.should == 'foobar'
-  end
-
-  it "should see an object passed into the block" do
-    session = 'foobar'
-    result = Tropo::Generator.new(session) do
-      session.should == 'foobar'
-      say :value => 'blah'
-      on  :event => 'error', :next => 'error.json'
-    end
   end
 
   it "should allow you to create a Tropo::Generator object and build up a JSON request with two says" do
