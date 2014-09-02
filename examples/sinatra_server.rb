@@ -128,7 +128,7 @@ end
 
 post '/record.json' do
   response = Tropo::Generator.record({ :name       => 'foo', 
-                                       :url        => 'http://sendme.com/tropo', 
+                                       :url        => 'http://example-url.com/tropo', 
                                        :beep       => true,
                                        :send_tones => false,
                                        :exit_tone  => '#' }) do

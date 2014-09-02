@@ -168,23 +168,23 @@ describe "Tropo" do
   # Record action tests
   it "should generate a complete 'record' JSON document" do
     response = Tropo::Generator.record({ :name       => 'foo',
-                                         :url        => 'http://sendme.com/tropo',
+                                         :url        => 'http://example-url.com/tropo',
                                          :beep       => true,
                                          :send_tones => false,
                                          :exit_tone  => '#' })
-    JSON.parse(response).should == {"tropo"=>[{"record"=>{"name"=>"foo", "beep"=>true, "url"=>"http://sendme.com/tropo", "exitTone"=>"#", "sendTones"=>false}}]}
+    JSON.parse(response).should == {"tropo"=>[{"record"=>{"name"=>"foo", "beep"=>true, "url"=>"http://example-url.com/tropo", "exitTone"=>"#", "sendTones"=>false}}]}
   end
 
   it "should generate a complete 'record' JSON document when a block is passed" do
     response = Tropo::Generator.record({ :name       => 'foo',
-                                         :url        => 'http://sendme.com/tropo',
+                                         :url        => 'http://example-url.com/tropo',
                                          :beep       => true,
                                          :send_tones => false,
                                          :exit_tone  => '#' }) do
                                            say     :value => 'Please say your account number'
                                            choices :value => '[5 DIGITS]'
                                          end
-    JSON.parse(response).should == {"tropo"=>[{"record"=>{"name"=>"foo", "say"=>[{"value"=>"Please say your account number"}], "beep"=>true, "url"=>"http://sendme.com/tropo", "sendTones"=>false, "exitTone"=>"#", "choices"=>{"value"=>"[5 DIGITS]"}}}]}
+    JSON.parse(response).should == {"tropo"=>[{"record"=>{"name"=>"foo", "say"=>[{"value"=>"Please say your account number"}], "beep"=>true, "url"=>"http://example-url.com/tropo", "sendTones"=>false, "exitTone"=>"#", "choices"=>{"value"=>"[5 DIGITS]"}}}]}
   end
 
   it "should generate an error if an 'record' is passed without a 'name' parameter" do
@@ -377,14 +377,14 @@ describe "Tropo" do
     tropo.say 'Welcome to the app'
     tropo.on :event => 'hangup', :next => '/hangup.json'
     tropo.record({ :name => 'foo',
-                   :url        => 'http://sendme.com/tropo',
+                   :url        => 'http://example-url.com/tropo',
                    :beep       => true,
                    :send_tones => false,
                    :exit_tone  => '#' }) do
                      say     :value => 'Please say your account number'
                      choices :value => '[5 DIGITS]'
                    end
-    JSON.parse(tropo.response).should == {"tropo"=>[{"say"=>[{"value"=>"Welcome to the app"}]}, {"on"=>{"event"=>"hangup", "next"=>"/hangup.json"}}, {"record"=>{"name"=>"foo", "say"=>[{"value"=>"Please say your account number"}], "beep"=>true, "url"=>"http://sendme.com/tropo", "sendTones"=>false, "exitTone"=>"#", "choices"=>{"value"=>"[5 DIGITS]"}}}]}
+    JSON.parse(tropo.response).should == {"tropo"=>[{"say"=>[{"value"=>"Welcome to the app"}]}, {"on"=>{"event"=>"hangup", "next"=>"/hangup.json"}}, {"record"=>{"name"=>"foo", "say"=>[{"value"=>"Please say your account number"}], "beep"=>true, "url"=>"http://example-url.com/tropo", "sendTones"=>false, "exitTone"=>"#", "choices"=>{"value"=>"[5 DIGITS]"}}}]}
   end
 
   it "should allow you to reset the object to a fresh response after building a response first" do
@@ -392,14 +392,14 @@ describe "Tropo" do
     tropo.say 'Welcome to the app'
     tropo.on :event => 'hangup', :next => '/hangup.json'
     tropo.record({ :name => 'foo',
-                   :url        => 'http://sendme.com/tropo',
+                   :url        => 'http://example-url.com/tropo',
                    :beep       => true,
                    :send_tones => false,
                    :exit_tone  => '#' }) do
                      say     :value => 'Please say your account number'
                      choices :value => '[5 DIGITS]'
                    end
-    JSON.parse(tropo.response).should == {"tropo"=>[{"say"=>[{"value"=>"Welcome to the app"}]}, {"on"=>{"event"=>"hangup", "next"=>"/hangup.json"}}, {"record"=>{"name"=>"foo", "say"=>[{"value"=>"Please say your account number"}], "beep"=>true, "url"=>"http://sendme.com/tropo", "sendTones"=>false, "exitTone"=>"#", "choices"=>{"value"=>"[5 DIGITS]"}}}]}
+    JSON.parse(tropo.response).should == {"tropo"=>[{"say"=>[{"value"=>"Welcome to the app"}]}, {"on"=>{"event"=>"hangup", "next"=>"/hangup.json"}}, {"record"=>{"name"=>"foo", "say"=>[{"value"=>"Please say your account number"}], "beep"=>true, "url"=>"http://example-url.com/tropo", "sendTones"=>false, "exitTone"=>"#", "choices"=>{"value"=>"[5 DIGITS]"}}}]}
     tropo.reset
     tropo.response.should == "{\"tropo\":[]}"
   end
@@ -490,9 +490,9 @@ describe "Tropo" do
   end
 
   it "should generate a valid JSON string for a record method with a transcription request" do
-    hash_result = {"tropo"=>[{"record"=>{"name"=>"foo", "transcription"=>{"email_format"=>"encoded", "url"=>"mailto:jose@voxeo.com", "id"=>"bling"}, "say"=>[{"value"=>"Please say your account number"}], "beep"=>true, "url"=>"http://sendme.com/tropo", "exitTone"=>"#", "sendTones"=>false, "choices"=>{"value"=>"[5 DIGITS]"}}}]}
+    hash_result = {"tropo"=>[{"record"=>{"name"=>"foo", "transcription"=>{"email_format"=>"encoded", "url"=>"mailto:jose@voxeo.com", "id"=>"bling"}, "say"=>[{"value"=>"Please say your account number"}], "beep"=>true, "url"=>"http://example-url.com/tropo", "exitTone"=>"#", "sendTones"=>false, "choices"=>{"value"=>"[5 DIGITS]"}}}]}
     tropo = Tropo::Generator.record({ :name          => 'foo',
-                                      :url           => 'http://sendme.com/tropo',
+                                      :url           => 'http://example-url.com/tropo',
                                       :beep          => true,
                                       :send_tones    => false,
                                       :transcription => { :id           => 'bling',

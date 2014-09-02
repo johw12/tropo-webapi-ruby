@@ -8,7 +8,7 @@ post '/index.json' do
   t.call :to => "+14071234321",
          :machineDetection => {
            :introduction => "This is just a test to see if you are a human or a machine. PLease hold while we determine. Almost finished. Thank you!",
-           :voice => "Victor"
+           :voice => "Kate"
          }
   
   t.on :event => 'continue', :next => '/continue.json'
