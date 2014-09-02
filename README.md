@@ -1,7 +1,6 @@
 # Tropo Web API Ruby Library
-[![Build Status](https://drone.io/github.com/tropo/tropo-webapi-ruby/status.png)](https://drone.io/github.com/tropo/tropo-webapi-ruby/latest)
 
-A Ruby library for interaction with the Tropo Web API (http://tropo.com) using JSON.
+A Ruby library for interaction with the Web API for the Tropo cloud communications service at (http://www.developergarden.com/) using JSON.
 
 ## Tropo Web API Overview
 
@@ -232,11 +231,11 @@ May be found by checking out the project from Github, and then looking in $PROJE
 
 * API Documentation:
 
-http://voxeo.github.com/tropo-webapi-ruby
+https://github.com/developergarden/tropo-webapi-ruby
 
 * Tropo Web API Documentation
 
-http://docs.tropo.com/webapi/2.0/home.htm
+https://www.developergarden.com/apis/documentation/api/telekom-tropo-documentation/html/index.html
 
 ## Notes
 
